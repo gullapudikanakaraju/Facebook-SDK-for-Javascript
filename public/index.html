@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Facebook SDK for javascript</title>
+
+	  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+<script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId            : '140550699846367',
+      autoLogAppEvents : true,
+      xfbml            : true,
+      version          : 'v2.9'
+    });
+    FB.AppEvents.logPageView();
+  };
+
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "//connect.facebook.net/en_US/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+</script>
+
+
+<div style="width:400px;margin:auto;margin-top:60px;padding: 70px;background-color:rgb(210, 214, 222);padding-bottom: 35px">
+<p style="padding-left: 70px;margin-top: -40px">Registration Form</p><br>
+   <form>
+   	   <div class="form-group">
+   	   	 <label for="name">Username :</label><br>
+   	   	 <input type="text" name="user_name" id="name" class="form-control" autocomplete="off" size="30">
+   	   </div>
+   	   <div class="form-group">
+   	   	 <label for="mail">Email :</label><br>
+   	   	 <input type="email" name="email_id" id="mail" class="form-control" autocomplete="off">
+   	   </div>
+   	   <div class="form-group">
+   	   	 <label for="pass">Password :</label><br>
+   	   	 <input type="password" name="pass_word" id="pass" class="form-control" autocomplete="off">
+   	   </div>
+   	   <div class="form-group">
+   	   	 <label for="re_pass">Retype Password :</label>
+   	   	 <input type="password" name="retype_pass" id="re_pass" class="form-control" autocomplete="off">
+   	   </div>
+   	   <button class="btn btn-primary btn-flat" style="width: 70px;display:block;margin: auto;background-color: #4267b2;back">submit</button><br>
+      
+        
+               <p style="text-align: center;">--------------- OR ---------------</p>       
+    
+   	   <div class="fb-login-button" data-max-rows="1" data-size="large" data-button-type="continue_with" data-show-faces="false" data-auto-logout-link="false" data-use-continue-as="false" data-scope="email" onlogin="abc()" data-auto-logout-link="true" data-auth-type="rerequest"></div>
+   </form>
+</div>
+<script type="text/javascript">
+   function abc()
+   {
+     FB.api("/me",'get',{fields:'email,name'},function(response){
+      document.getElementById("mail").value=response.email;
+      document.getElementById("name").value=response.name;
+     });
+   }
+</script>
+</body>
+</html>
